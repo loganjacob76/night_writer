@@ -1,3 +1,5 @@
+require_relative 'dictionary'
+
 class ToBraille
   attr_reader :message,
               :dictionary,
