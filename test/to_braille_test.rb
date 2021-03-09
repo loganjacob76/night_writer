@@ -41,4 +41,8 @@ class ToBrailleTest < Minitest::Test
 
     assert_equal expected, @translator.format
   end
+
+  def test_to_braille
+    assert_equal "0...0.", @translator.to_braille("k")
+  end
 end
