@@ -9,6 +9,13 @@ class ToEnglish
     @complete_message = ""
   end
 
+  def translate
+    english = form_letters.map do |braille|
+      @dictionary.to_english(braille)
+    end.join
+    @complete_message = english
+  end
+
   def form_letters
     rows = make_rows
     letters = []
