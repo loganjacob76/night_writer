@@ -9,6 +9,15 @@ class ToBraille
     @complete_message = []
   end
 
+  def translate_message
+    lines = character_limit
+    until lines[:top].empty?
+      @complete_message << lines[:top].shift.join
+      @complete_message << lines[:middle].shift.join
+      @complete_message << lines[:bottom].shift.join
+    end
+  end
+
   def character_limit
     format.transform_values do |array|
       array.each_slice(40).to_a

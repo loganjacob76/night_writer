@@ -17,6 +17,12 @@ class ToBrailleTest < Minitest::Test
     assert_equal [], @translator.complete_message
   end
 
+  def test_translate_message
+    @translator2.translate_message
+
+    assert_equal 9, @translator2.complete_message.count
+  end
+
   def test_character_limit
     assert_equal 3, @translator2.character_limit[:top].count
     assert_equal 3, @translator2.character_limit[:middle].count
