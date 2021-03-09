@@ -20,4 +20,12 @@ class ToBrailleTest < Minitest::Test
 
     assert_equal expected, @translator.translate
   end
+
+  def test_format
+    expected = {:top=>["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
+      :middle=>["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
+      :bottom=>["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]}
+
+    assert_equal expected, @translator.format
+  end
 end

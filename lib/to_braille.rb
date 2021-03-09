@@ -9,6 +9,20 @@ class ToBraille
     @complete_message = []
   end
 
+  def format
+    order = {
+      top: [],
+      middle: [],
+      bottom: []
+    }
+    translate.each do |braille|
+      order[:top] << braille[0..1]
+      order[:middle] << braille[2..3]
+      order[:bottom] << braille[4..5]
+    end
+    order
+  end
+
   def translate
     @message.map do |letter|
       @dictionary.to_braille(letter)
