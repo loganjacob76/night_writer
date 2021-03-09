@@ -5,5 +5,6 @@ SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require './lib/to_braille'
 require './lib/dictionary'
+require './lib/to_braille'
+require './lib/to_english'
