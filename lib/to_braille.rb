@@ -9,6 +9,12 @@ class ToBraille
     @complete_message = []
   end
 
+  def character_limit
+    format.transform_values do |array|
+      array.each_slice(40).to_a
+    end
+  end
+
   def format
     order = {
       top: [],

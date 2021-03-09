@@ -3,16 +3,24 @@ require_relative 'test_helper'
 class ToBrailleTest < Minitest::Test
   def setup
     @translator = ToBraille.new("hello world")
+    @translator2 = ToBraille.new("hello world. this is a longer string in order to test that my splitting into a max of forty characters works")
   end
 
   def test_it_exists
     assert_instance_of ToBraille, @translator
+    assert_instance_of ToBraille, @translator2
   end
 
   def test_it_has_attributes
     assert_equal ["h","e","l","l","o"," ","w","o","r","l","d"], @translator.message
     assert_instance_of Dictionary, @translator.dictionary
     assert_equal [], @translator.complete_message
+  end
+
+  def test_character_limit
+    assert_equal 3, @translator2.character_limit[:top].count
+    assert_equal 3, @translator2.character_limit[:middle].count
+    assert_equal 3, @translator2.character_limit[:bottom].count
   end
 
   def test_translate
