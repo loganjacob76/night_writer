@@ -8,4 +8,16 @@ class ToBrailleTest < Minitest::Test
   def test_it_exists
     assert_instance_of ToBraille, @translator
   end
+
+  def test_it_has_attributes
+    assert_equal ["h","e","l","l","o"," ","w","o","r","l","d"], @translator.message
+    assert_instance_of Dictionary, @translator.dictionary
+    assert_equal [], @translator.complete_message
+  end
+
+  def test_translate
+    expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
+
+    assert_equal expected, @translator.translate
+  end
 end
