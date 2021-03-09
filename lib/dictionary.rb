@@ -35,4 +35,12 @@ class Dictionary
       "." => "..00.0"
     }
   end
+
+  def to_braille(letter)
+    @alphabet[letter]
+  end
+
+  def to_english(braille)
+    @alphabet.key(braille)
+  end
 end

@@ -45,4 +45,12 @@ class DictionaryTest < Minitest::Test
 
     assert_equal expected, @dictionary.alphabet
   end
+
+  def test_to_braille
+    assert_equal "0...0.", @dictionary.to_braille("k")
+  end
+
+  def test_to_english
+    assert_equal "f", @dictionary.to_english("000...")
+  end
 end
