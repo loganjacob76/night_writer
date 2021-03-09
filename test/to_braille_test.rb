@@ -28,18 +28,18 @@ class ToBrailleTest < Minitest::Test
     assert_equal 3, @translator2.character_limit[:bottom].count
   end
 
-  def test_translate
-    expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
-
-    assert_equal expected, @translator.translate
-  end
-
   def test_format
     expected = {:top=>["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
       :middle=>["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
       :bottom=>["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]}
 
-    assert_equal expected, @translator.format
+      assert_equal expected, @translator.format
+    end
+
+  def test_translate
+    expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
+
+    assert_equal expected, @translator.translate
   end
 
   def test_to_braille
