@@ -1,3 +1,5 @@
+require_relative 'dictionary'
+
 class ToEnglish
   attr_reader :message,
               :dictionary,
