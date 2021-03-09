@@ -1,13 +1,13 @@
 require_relative 'dictionary'
 
 class ToBraille
+  include Dictionary
+
   attr_reader :message,
-              :dictionary,
               :complete_message
 
   def initialize(message)
     @message = message.downcase.split("")
-    @dictionary = Dictionary.new
     @complete_message = []
   end
 
@@ -42,7 +42,7 @@ class ToBraille
 
   def translate
     @message.map do |letter|
-      @dictionary.to_braille(letter)
+      to_braille(letter)
     end
   end
 end

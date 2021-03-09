@@ -13,7 +13,6 @@ class ToBrailleTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal ["h","e","l","l","o"," ","w","o","r","l","d"], @translator.message
-    assert_instance_of Dictionary, @translator.dictionary
     assert_equal [], @translator.complete_message
   end
 
