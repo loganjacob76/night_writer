@@ -28,6 +28,10 @@ class ToEnglishTest < Minitest::Test
     assert_equal expected, @translator.complete_message
   end
 
+  def test_to_english
+    assert_equal "f", @translator.to_english("000...")
+  end
+
   def test_form_letters
     expected = [".000.0","0.00..","0.....",".0000.","......",".00...","000...","......",
       ".00...","......","0.00..","0.....","00.0..","......","0.....","......","00..0.",
