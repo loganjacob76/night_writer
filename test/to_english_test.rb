@@ -18,7 +18,6 @@ class ToEnglishTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal @message, @translator.message
-    assert_instance_of Dictionary, @translator.dictionary
     assert_equal "", @translator.complete_message
   end
 
@@ -27,6 +26,10 @@ class ToEnglishTest < Minitest::Test
 
     assert_equal expected, @translator.translate
     assert_equal expected, @translator.complete_message
+  end
+
+  def test_to_english
+    assert_equal "f", @translator.to_english("000...")
   end
 
   def test_form_letters

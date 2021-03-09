@@ -13,7 +13,6 @@ class ToBrailleTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal ["h","e","l","l","o"," ","w","o","r","l","d"], @translator.message
-    assert_instance_of Dictionary, @translator.dictionary
     assert_equal [], @translator.complete_message
   end
 
@@ -29,17 +28,21 @@ class ToBrailleTest < Minitest::Test
     assert_equal 3, @translator2.character_limit[:bottom].count
   end
 
+  def test_format
+    expected = {:top=>["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
+      :middle=>["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
+      :bottom=>["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]}
+
+      assert_equal expected, @translator.format
+    end
+
   def test_translate
     expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
 
     assert_equal expected, @translator.translate
   end
 
-  def test_format
-    expected = {:top=>["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
-      :middle=>["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
-      :bottom=>["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]}
-
-    assert_equal expected, @translator.format
+  def test_to_braille
+    assert_equal "0...0.", @translator.to_braille("k")
   end
 end

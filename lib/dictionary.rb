@@ -1,8 +1,6 @@
-class Dictionary
-  attr_reader :alphabet
-
-  def initialize
-    @alphabet = {
+module Dictionary
+  def alphabet
+    {
       "a" => "0.....",
       "b" => "0.0...",
       "c" => "00....",
@@ -32,15 +30,21 @@ class Dictionary
       " " => "......",
       "," => "..0...",
       "'" => "....0.",
-      "." => "..00.0"
+      "." => "..00.0",
+      "!" => "..000.",
+      "?" => "..0.00",
+      ":" => "..00..",
+      ";" => "..0.0.",
+      "-" => "....00",
+      "/" => ".0..0."
     }
   end
 
   def to_braille(letter)
-    @alphabet[letter]
+    alphabet[letter]
   end
 
   def to_english(braille)
-    @alphabet.key(braille)
+    alphabet.key(braille)
   end
 end
