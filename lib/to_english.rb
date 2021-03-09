@@ -9,6 +9,19 @@ class ToEnglish
     @complete_message = ""
   end
 
+  def form_letters
+    rows = make_rows
+    letters = []
+    until rows[:top].empty?
+      single_letter = [].join
+      single_letter << rows[:top].slice!(0..1)
+      single_letter << rows[:middle].slice!(0..1)
+      single_letter << rows[:bottom].slice!(0..1)
+      letters << single_letter
+    end
+    letters
+  end
+
   def make_rows
     raw_text = @message
     rows = {
