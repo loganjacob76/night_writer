@@ -1,19 +1,19 @@
 require_relative 'dictionary'
 
 class ToEnglish
+  include Dictionary
+  
   attr_reader :message,
-              :dictionary,
               :complete_message
 
   def initialize(message)
     @message = message
-    @dictionary = Dictionary.new
     @complete_message = ""
   end
 
   def translate
     english = form_letters.map do |braille|
-      @dictionary.to_english(braille)
+      to_english(braille)
     end.join
     @complete_message = english
   end
