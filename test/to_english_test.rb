@@ -15,4 +15,10 @@ class ToEnglishTest < Minitest::Test
   def test_it_exists
     assert_instance_of ToEnglish, @translator
   end
+
+  def test_it_has_attributes
+    assert_equal @message, @translator.message
+    assert_instance_of Dictionary, @translator.dictionary
+    assert_equal "", @translator.complete_message
+  end
 end
